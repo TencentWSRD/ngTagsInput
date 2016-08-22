@@ -1,2 +1,5 @@
-<span ng-bind="$getDisplayText()"></span>
-<a class="remove-button" ng-click="$removeTag()" ng-bind="::$$removeTagSymbol"></a>
+<div class="tag-template">
+  <span class="tag-name">{{$getDisplayText()}}
+    <em style="opacity: 0;">;</em>
+  </span><i class="zmdi zmdi-close icon-clickable" ng-click="$removeTag()"></i>
+</div>

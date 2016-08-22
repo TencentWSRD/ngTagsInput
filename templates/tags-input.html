@@ -1,24 +1,54 @@
-<div class="host" tabindex="-1" ng-click="eventHandlers.host.click()" ti-transclude-append>
-  <div class="tags" ng-class="{focused: hasFocus}">
-    <ul class="tag-list">
-      <li class="tag-item"
-          ng-repeat="tag in tagList.items track by track(tag)"
-          ng-class="getTagClass(tag, $index)"
-          ng-click="eventHandlers.tag.click(tag)">
-        <ti-tag-item scope="templateScope" data="::tag"></ti-tag-item>
+<div class="host" tabindex="-1" ng-click="eventHandlers.host.click($event)" ti-transclude-append>
+  <div class="tags clearfix" ng-class="{focused: hasFocus}">
+    <div class="button-wrap">
+      <button class="btn btn-xs btn-default" ng-click="hideOverflowTags()"
+              type="button" ng-if="tagsOverflow && !tagsOverflowHidden">收起
+      </button>
+      <button class="btn btn-xs btn-default" ng-click="eventHandlers.input.reset($event)"
+              uib-tooltip="{{additionBtnOption.reset.text}}" tooltip-trigger="none"
+              id="ngTagsInputResetHook_{{hookId}}"
+              tooltip-is-open="additionBtnOption.reset.open" tooltip-append-to-body="true" tooltip-popup-delay="0"
+              tooltip-placement="left" tooltip-animation="true" tooltip-class="{{additionBtnOption.reset.class}}"
+              type="button" ng-if="showAdditionBtn">重置
+      </button>
+      <button class="btn btn-xs btn-success" id="ngTagsInputCopyHook_{{hookId}}"
+              uib-tooltip="{{additionBtnOption.copy.text}}" tooltip-is-open="additionBtnOption.copy.open"
+              tooltip-append-to-body="true" tooltip-popup-delay="0" tooltip-placement="left" tooltip-trigger="none"
+              tooltip-animation="true" tooltip-class="{{additionBtnOption.copy.class}}" type="button"
+              ng-if="showAdditionBtn">复制
+      </button>
+    </div>
+    <ul class="tag-list" ng-if="!tagsOverflow || !tagsOverflowHidden">
+      <li class="tag-item" ng-repeat="tag in tagList.items track by $index"
+          ng-class="{ selected: tag == tagList.selected }" ng-click="eventHandlers.tag.click(tag)">
+        <ti-tag-item data="tag"></ti-tag-item>
       </li>
     </ul>
-    <input class="input"
-           autocomplete="off"
-           ng-model="newTag.text"
-           ng-model-options="{getterSetter: true}"
-           ng-keydown="eventHandlers.input.keydown($event)"
-           ng-focus="eventHandlers.input.focus($event)"
-           ng-blur="eventHandlers.input.blur($event)"
-           ng-paste="eventHandlers.input.paste($event)"
-           ng-trim="false"
-           ng-class="{'invalid-tag': newTag.invalid}"
-           ng-disabled="disabled"
+    <ul class="tag-list" ng-if="tagsOverflow && tagsOverflowHidden">
+      <li class="tag-item" ng-repeat="tag in tagList.items.slice(0, showTagsLimit/2) track by $index"
+          ng-class="{ selected: tag == tagList.selected }" ng-click="eventHandlers.tag.click(tag)">
+        <ti-tag-item data="tag"></ti-tag-item>
+      </li>
+      <li class="tag-item" style="box-shadow: none; background: none;">......</li>
+      <li class="btn btn-default" style="width: 100%; margin: 8px 0;" ng-click="showOverflowTags()">
+        点击展示全部{{tagList.items.length}}项
+      </li>
+      <div ng-hide="true">
+        <li class="tag-item"
+            ng-repeat="tag in tagList.items.slice(showTagsLimit/2+1, tagList.items.length - showTagsLimit/2) track by $index"
+            ng-class="{ selected: tag == tagList.selected }" ng-click="eventHandlers.tag.click(tag)">
+          <ti-tag-item data="tag"></ti-tag-item>
+        </li>
+      </div>
+      <li class="tag-item" ng-repeat="tag in tagList.items.slice(-(showTagsLimit/2 + lengthDiff)) track by $index"
+          ng-class="{ selected: tag == tagList.selected }" ng-click="eventHandlers.tag.click(tag)">
+        <ti-tag-item data="tag"></ti-tag-item>
+      </li>
+    </ul>
+    <input class="input" autocomplete="off" ng-model="newTag.text" ng-model-options="{getterSetter: true}"
+           ng-keydown="eventHandlers.input.keydown($event)" ng-focus="eventHandlers.input.focus($event)"
+           ng-blur="eventHandlers.input.blur($event)" ng-paste="eventHandlers.input.paste($event)"
+           ng-trim="false" ng-class="{'invalid-tag': newTag.invalid}" ng-disabled="disabled"
            ti-bind-attrs="{type: options.type, placeholder: options.placeholder, tabindex: options.tabindex, spellcheck: options.spellcheck}"
            ti-autosize>
   </div>

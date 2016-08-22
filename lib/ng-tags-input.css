@@ -1,0 +1,189 @@
+tags-input {
+  display: block;
+}
+tags-input *, tags-input *:before, tags-input *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+tags-input .host {
+  position: relative;
+  height: 100%;
+}
+tags-input .host:active {
+  outline: none;
+}
+
+tags-input .tags {
+  position: relative;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  font-size: 12px;
+  /*overflow: hidden;*/
+  word-wrap: break-word;
+  cursor: text;
+  font-weight: normal;
+  min-height: 51px;
+  height: 100%;
+  line-height: 1.846;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  padding: 0px;
+  border: none;
+  border-radius: 0px;
+  -webkit-appearance: none;
+  box-shadow: #dddddd 0px -1px 0px inset;
+  -webkit-box-shadow: #dddddd 0px -1px 0px inset;
+  font-size: 14px;
+  padding-bottom: 2px;
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+tags-input .tags.focused {
+  -webkit-box-shadow: #b4b4b4 0px -1px 0px inset;
+  -moz-box-shadow: #b4b4b4 0px -1px 0px inset;
+  box-shadow: #b4b4b4 0px -1px 0px inset;
+}
+tags-input .tags .tag-list {
+  margin: 0;
+  margin-right: 45px;
+  padding: 0;
+  list-style-type: none;
+}
+tags-input .tags .button-wrap {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  /*float: right;*/
+  /*min-height: 52px;*/
+  /*height: 100%;*/
+  width: 40px;
+  text-align: center;
+}
+tags-input .tags .tag-item {
+  padding: 4px;
+  float: left;
+  color: #ffffff;
+  font-size: 12px;
+  vertical-align: middle;
+  height: 24px;
+  line-height: 1;
+  border: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1), 0 2px 1px rgba(0, 0, 0, 0.12);
+  margin: 2px 2px 3px 2px;
+  color: #2b2b2b;
+  background-color: #fafafa;
+  border-color: #fafafa;
+}
+tags-input .tags .tag-item .tag-template .tag-name {
+  vertical-align: middle;
+}
+tags-input .tags .tag-item .tag-template .icon-clickable {
+  vertical-align: sub;
+  color: #888;
+}
+tags-input .tags .tag-item .tag-template .icon-clickable:hover {
+  color: #000;
+}
+tags-input .tags .tag-item.selected {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.19);
+}
+tags-input .tags .tag-item .remove-button {
+  margin: 0 0 0 5px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  vertical-align: middle;
+  font: bold 16px Arial, sans-serif;
+  color: #fff;
+}
+tags-input .tags .tag-item .remove-button:active {
+  color: #ff0000;
+}
+tags-input .tags .tag-item .remove-button:hover {
+  color: #f04124;
+}
+tags-input .tags .input {
+  border: 0;
+  outline: none;
+  float: left;
+  height: 30px;
+  padding: 4px 0;
+  margin-right: 45px;
+  font-size: 12px;
+  line-height: 1.4;
+  box-shadow: none;
+  background: transparent;
+  text-indent: 5px;
+}
+tags-input .tags .input.invalid-tag {
+  color: #e51c23;
+}
+tags-input .tags .input::-ms-clear {
+  display: none;
+}
+tags-input.ng-invalid .tags {
+  border-bottom: none;
+  -webkit-box-shadow: inset 0 -1px 0 #fccbc7;
+  box-shadow: inset 0 -1px 0 #fccbc7;
+}
+tags-input.ng-invalid .tags.focused {
+  -webkit-box-shadow: inset 0 -2px 0 #f44336;
+  box-shadow: inset 0 -2px 0 #f44336;
+}
+tags-input[disabled] .host:focus {
+  outline: none;
+}
+tags-input[disabled] .tags {
+  background-color: #eee;
+  cursor: default;
+}
+tags-input[disabled] .tags .tag-item {
+  opacity: 0.65;
+  background: -webkit-linear-gradient(top, #f0f9ff 0%, rgba(203, 235, 255, 0.75) 47%, rgba(161, 219, 255, 0.62) 100%);
+  background: linear-gradient(to bottom, #f0f9ff 0%, rgba(203, 235, 255, 0.75) 47%, rgba(161, 219, 255, 0.62) 100%);
+}
+tags-input[disabled] .tags .tag-item .remove-button {
+  cursor: default;
+}
+tags-input[disabled] .tags .tag-item .remove-button:active {
+  color: #585858;
+}
+tags-input[disabled] .tags .input {
+  background-color: #eee;
+  cursor: default;
+}
+tags-input .dropdown-menu {
+  width: 100%;
+  z-index: 1001;
+}
+tags-input .dropdown-menu em {
+  font: normal bold 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #000;
+}
+tags-input .tag-item-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 30px;
+  box-shadow: 0 0 0 1px #dcdcdc;
+  -webkit-box-shadow: 0 0 0 1px #dcdcdc;
+}
+tags-input .icon-clickable {
+  font-size: 14px;
+}
+tags-input .icon-clickable:hover {
+  color: #e51c23;
+}
+
+.fg-line tags-input .tags.focused {
+  -webkit-box-shadow: inset 0 -2px 0 #2196f3;
+  box-shadow: inset 0 -2px 0 #2196f3;
+}
+
+/*# sourceMappingURL=ng-tags-input.css.map */
