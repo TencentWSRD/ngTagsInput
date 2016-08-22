@@ -5,7 +5,7 @@
   "dependencies": {
     "clipboard": "^1.5.5"
   },
-  "description": "Cusomize version of ngTagsInput.",
+  "description": "Customized version of ngTagsInput.",
   "devDependencies": {},
   "directories": {},
   "keywords": [
@@ -28,5 +28,5 @@
   "name": "ng-tags-input-ci-dev",
   "optionalDependencies": {},
   "scripts": {},
-  "version": "3.0.14"
+  "version": "3.0.15"
 }
